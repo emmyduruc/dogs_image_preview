@@ -7,7 +7,7 @@ type Content = {
 };
 
 export default function ImagesHooks() {
-  const [myImages, setMyImages] = useState<string[]>();
+  const [myImages, setMyImages] = useState<any>();
   const [error, setError] = useState<unknown>();
   
 
@@ -15,7 +15,7 @@ export default function ImagesHooks() {
     const fetchDogs = async () => {
       try {
         const result = await axios.get<Content>(
-          "https://dog.ceo/api/breeds/image/random/100"
+          "https://dog.ceo/api/breeds/image/random/50"
         );
         const finalDogResult = result.data.message;
         console.log("finalResult", finalDogResult, typeof finalDogResult);
