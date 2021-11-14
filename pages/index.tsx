@@ -6,14 +6,17 @@ import {RecoilRoot} from "recoil";
 import styles from "../styles/Home.module.css";
 import HomePage from "../components/home/HomePage";
 import NavBar from "../components/nav/NavBar";
+import React from "react";
 
 const Home: NextPage = () => {
   return (
     <RecoilRoot>
+      
     <div className={styles.container}>
       <NavBar />
       <HomePage />
     </div>
+   
     </RecoilRoot>
   );
 };

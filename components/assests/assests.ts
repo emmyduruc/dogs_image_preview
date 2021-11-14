@@ -6,6 +6,11 @@ export const countAtom = atom<number[]>({
   default: new Array(50).fill(0),
 });
 
+export const imageAtom = atom<string[]>({
+  key: "image-atoms",
+  default: [],
+});
+
 export const imageQuery = selector({
   key: "imageQueries",
   get: async () => {
@@ -15,5 +20,3 @@ export const imageQuery = selector({
     return images.data.message;
   },
 });
-
-

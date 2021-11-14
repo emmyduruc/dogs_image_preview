@@ -4,18 +4,7 @@ function Loader() {
        return (
               <div>
                      loading ....
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
-                     <h2>am still loading</h2>
+                     <h2>Am still loading</h2>
                      
               </div>
        )

@@ -1,7 +1,16 @@
 .container {
-  padding: 0 2rem;
+  background-color: #F0F7F4;
 }
 
+.homeContainer{
+  position: relative;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  cursor: pointer;
+  margin-left: 35%;
+}
 .main {
   min-height: 100vh;
   padding: 4rem 0;
