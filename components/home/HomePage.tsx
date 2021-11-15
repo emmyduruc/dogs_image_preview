@@ -1,13 +1,14 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ImageModal from "./Modal";
 import styled from "styled-components";
 import axios from "axios";
 import Loader from "./Loader";
-import { countAtom, imageAtom } from "../assests/assests";
+import { countAtom, imageAtom, modalAtom } from "../recoils/atoms";
 
 const Container = styled.div`
   display: grid;
@@ -19,14 +20,17 @@ const Container = styled.div`
 
 const HomePage = () => {
   const [count, setCount] = useRecoilState(countAtom);
-  console.log("counts", count);
   const [modalShow, setModalShow] = useState(false);
-  const [modalImage, setModalImage] = useState("");
+  const [img, setModalImg] = useRecoilState(modalAtom);
   const [images, setImages] = useRecoilState(imageAtom);
-  // const [images, setImages] = useState<string[]>([]);
 
-  console.log(images, "images");
-
+  const handleClick = (image: string, index: number) => {
+    setModalShow(true);
+    setModalImg(image);
+    const newArray = [...count];
+    newArray[index] += 1;
+    setCount(newArray);
+  };
   const fetchImages = async (num = 25) => {
     await axios
       .get<any>(
@@ -36,7 +40,6 @@ const HomePage = () => {
       )
       .then((res) => {
         setImages([...images, ...res.data.message]);
-        console.log("type", typeof count);
         const arr = [...count, ...new Array(res.data.message.length).fill(0)];
         setCount(arr);
       });
@@ -46,7 +49,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Container>
+    <Container aria-labelledby="dogs image container">
       <InfiniteScroll
         dataLength={images.length}
         next={fetchImages}
@@ -56,21 +59,26 @@ const HomePage = () => {
         {images &&
           images.map((image: string, index: number) => (
             <Card
+              aria-labelledby="dogs image card"
+              style={{ margin: "10px", border: "none" }}
               onClick={() => {
-                setModalShow(true);
-                setModalImage(image);
-                const newArray = [...count];
-                newArray[index] += 1;
-                setCount(newArray);
+                handleClick(image, index);
               }}
-              key={image}
+              key={uuidv4()}
             >
-              <Card.Img variant="top" src={image} />
-              <Card.Title>Your views: {count[index]}</Card.Title>
+              <Card.Img
+                aria-labelledby="dogs images"
+                variant="top"
+                src={image}
+                alt="dogs images"
+              />
+              <Card.Title aria-labelledby="preview counts">
+                Previews: <Badge bg="secondary">{count[index]}</Badge>
+              </Card.Title>
             </Card>
           ))}
         <ImageModal
-          modalImage={modalImage}
+          img={img}
           show={modalShow}
           onHide={() => setModalShow(false)}
         />
