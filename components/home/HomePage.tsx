@@ -7,7 +7,7 @@ import ImageModal from "./Modal";
 import styled from "styled-components";
 import axios from "axios";
 import Loader from "./Loader";
-import { countAtom } from "../assests/assests";
+import { countAtom, imageAtom } from "../assests/assests";
 
 const Container = styled.div`
   display: grid;
@@ -22,7 +22,8 @@ const HomePage = () => {
   console.log("counts", count);
   const [modalShow, setModalShow] = useState(false);
   const [modalImage, setModalImage] = useState("");
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useRecoilState(imageAtom);
+  // const [images, setImages] = useState<string[]>([]);
 
   console.log(images, "images");
 

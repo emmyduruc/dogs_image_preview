@@ -8,6 +8,7 @@ import HomePage from "../components/home/HomePage";
 import NavBar from "../components/nav/NavBar";
 import React from "react";
 
+
 const Home: NextPage = () => {
   return (
     <RecoilRoot>
@@ -16,7 +17,6 @@ const Home: NextPage = () => {
       <NavBar />
       <HomePage />
     </div>
-   
     </RecoilRoot>
   );
 };

@@ -20,3 +20,13 @@ export const imageQuery = selector({
     return images.data.message;
   },
 });
+export const selectedItems = atom<string[]>({
+  key: "selectedItems",
+  default: [],
+});
+export const cartCount = selector({
+  key: "cartCount",
+  get: ({ get }) => {
+    return get(selectedItems).length;
+  },
+});

@@ -1,13 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  Navbar,
-  FormControl,
-  Nav,
-  Form,
-  NavDropdown,
-} from "react-bootstrap";
-
+import { mobile } from "../assests/responsive";
 
 const Container = styled.div`
   display: flex;
@@ -35,17 +28,9 @@ const Input = styled.input`
   width: 39em;
   height: 1.5rem;
   border-radius: 6px;
+  ${mobile({ width: '90px' })}
 `;
 
-const Span = styled.span`
- color: red;
-
-`;
-const Icons = styled.div`
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-`;
 function NavBar() {
   return (
     // <Navbar bg="light" expand="lg">
