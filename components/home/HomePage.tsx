@@ -72,9 +72,11 @@ const HomePage = () => {
                 src={image}
                 alt="dogs images"
               />
-              <Card.Title aria-labelledby="preview counts">
-                Previews: <Badge bg="secondary">{count[index]}</Badge>
-              </Card.Title>
+              {image && (
+                <Card.Title aria-labelledby="preview counts">
+                  Previews: <Badge bg="secondary">{count[index]}</Badge>
+                </Card.Title>
+              )}
             </Card>
           ))}
         <ImageModal
