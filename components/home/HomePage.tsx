@@ -1,13 +1,13 @@
 import React from "react";
+import axios from "axios";
+import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
-import { Card, Badge } from "react-bootstrap";
-import { atom, useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ImageModal from "./Modal";
-import styled from "styled-components";
-import axios from "axios";
 import Loader from "./Loader";
+import { Card, Badge } from "react-bootstrap";
 import { countAtom, imageAtom, modalAtom } from "../recoils/atoms";
 
 const Container = styled.div`
@@ -20,7 +20,7 @@ const Container = styled.div`
 
 const HomePage = () => {
   const [count, setCount] = useRecoilState(countAtom);
-  const [modalShow, setModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState<boolean>(false);
   const [img, setModalImg] = useRecoilState(modalAtom);
   const [images, setImages] = useRecoilState(imageAtom);
 

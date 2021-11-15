@@ -1,5 +1,4 @@
 import { atom, selector } from "recoil";
-import axios from "axios";
 
 export const countAtom = atom<number[]>({
   key: "count-preview",

@@ -1,9 +1,7 @@
 import React from "react";
-import { atom, useRecoilState } from "recoil";
 import styled from "styled-components";
 import { Card, Modal } from "react-bootstrap";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { type } from "os";
 
 const Clicks = styled.div`
   display: flex;
@@ -16,14 +14,16 @@ const Button = styled.div`
   text-align: center;
   border: 0.1rem solid black;
 `;
-type Props = {
-  image: string;
-};
 
-function ImageModal(props) {
+type Props = {
+  img: string;
+  show: boolean;
+  onHide: () => void;
+};
+function ImageModal(Props: Props) {
   return (
     <Modal
-      {...props}
+      {...Props}
       size="sm"
       aria-labelledby="contained-modal-title-vertical-center"
       centered
@@ -57,14 +57,14 @@ function ImageModal(props) {
                   aria-labelledby="modal image"
                   variant="top"
                   style={{ width: "100%" }}
-                  src={props.img}
+                  src={Props.img}
                 />
               </TransformComponent>
             </React.Fragment>
           )}
         </TransformWrapper>
       </Card>
-      <Button aria-labelledby="close modal" onClick={props.onHide}>
+      <Button aria-labelledby="close modal" onClick={Props.onHide}>
         Close
       </Button>
     </Modal>
