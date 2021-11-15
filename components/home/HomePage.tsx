@@ -1,22 +1,14 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import InfiniteScroll from "react-infinite-scroll-component";
-import ImageModal from "./Modal";
+import ImageModal from "../modal/Modal";
 import Loader from "./Loader";
 import { Card, Badge } from "react-bootstrap";
 import { countAtom, imageAtom, modalAtom } from "../recoils/atoms";
-
-const Container = styled.div`
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(2, 1fr);
-  cursor: pointer;
-  margin-left: 35%;
-`;
+import { Container } from "./style";
 
 const HomePage = () => {
   const [count, setCount] = useRecoilState(countAtom);
