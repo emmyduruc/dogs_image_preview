@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Modal } from "react-bootstrap";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
 import { Button, Clicks } from "./style";
 import { Props } from "../assests/type";
 

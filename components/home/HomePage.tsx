@@ -34,6 +34,7 @@ const HomePage = ({ result }: ImageProps) => {
     });
     setImages(updatedCount);
   };
+
   const fetchImages = async (num = 25) => {
     await axios
       .get(
