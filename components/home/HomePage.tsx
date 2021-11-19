@@ -21,7 +21,7 @@ const HomePage = ({ result }: ImageProps) => {
   useEffect(() => {
     setImages(result);
   }, []);
-  
+
   const handleClick = (image: ImageObject) => {
     setModalShow(true);
     setModalImg(image.url);
